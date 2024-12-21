@@ -10,7 +10,14 @@ const window_height = Dimensions.get("window").height;
 
 const EmptyNoteList = () => {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 100,
+      }}
+    >
       <Image
         source={images.create_first_note}
         style={{

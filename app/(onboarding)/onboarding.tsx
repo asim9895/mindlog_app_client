@@ -87,7 +87,7 @@ const Onboarding = () => {
           }}
           onPress={() => {
             dispatch(first_time_entry_change());
-            router.push("/(auth)/register");
+            router.push("/(notes)/notes");
           }}
         >
           <Text
@@ -101,7 +101,7 @@ const Onboarding = () => {
             GET STARTED
           </Text>
         </TouchableOpacity>
-        <Text
+        {/* <Text
           onPress={() => {
             dispatch(first_time_entry_change());
             router.push("/(auth)/login");
@@ -117,7 +117,7 @@ const Onboarding = () => {
           }}
         >
           Already Have An Account?
-        </Text>
+        </Text> */}
       </View>
     </View>
   );

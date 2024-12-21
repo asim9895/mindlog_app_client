@@ -55,8 +55,6 @@ export default function RootLayout() {
             options={{ headerShown: false }}
           />
           <Stack.Screen name="(notes)" options={{ headerShown: false }} />
-          <Stack.Screen name="(user)" options={{ headerShown: false }} />
-          <Stack.Screen name="(auth)" options={{ headerShown: false }} />
           <Stack.Screen name="+not-found" />
         </Stack>
       </Provider>

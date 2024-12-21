@@ -1,27 +1,33 @@
 import {
   FlatList,
   Image,
-  Platform,
   Pressable,
-  StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { colors } from "@/theme/colors";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { font_family } from "@/theme/font_family";
 import { icons } from "@/constants/icons";
-
 import EmptyNoteList from "@/components/EmptyNoteList/EmptyNoteList";
-import { notes } from "@/data/notes";
 import { router } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import { delete_note } from "@/redux/actions/noteActions";
 
 const Notes = () => {
+  const dispatch: any = useDispatch();
+  const { notes } = useSelector((state: any) => state.note);
+
+  const delete_note_from_list = (id: string) => {
+    dispatch(delete_note(id));
+  };
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
+      <StatusBar backgroundColor={colors.background} style="dark" />
       <View
         style={{
           width: "100%",
@@ -57,10 +63,9 @@ const Notes = () => {
               alignItems: "center",
             }}
           >
-            <Image source={icons.search} style={{ width: 20, height: 20 }} />
             <Image
-              source={icons.settings}
-              style={{ width: 20, height: 20, marginLeft: 30 }}
+              source={icons.search}
+              style={{ width: 20, height: 20, tintColor: colors.text }}
             />
           </View>
         </View>
@@ -79,8 +84,8 @@ const Notes = () => {
                 marginBottom: item.id === notes[notes.length - 1].id ? 120 : 0,
                 marginTop: index === 0 || index === 1 ? 15 : 5,
                 margin: 3,
-                height: 250,
-                backgroundColor: "white",
+                height: 150,
+                backgroundColor: colors.white,
                 borderRadius: 4,
                 overflow: "hidden",
               },
@@ -102,20 +107,19 @@ const Notes = () => {
                 }}
               >
                 <Text
-                  numberOfLines={3}
+                  numberOfLines={5}
                   style={{
-                    height: "40%",
+                    height: "100%",
                     width: "100%",
-
                     fontSize: 15,
                     fontFamily: font_family.Nunito_800ExtraBold,
                     color: colors.text,
                   }}
                 >
-                  {item.title}
+                  {item.title === "" ? "No Title" : item?.title}
                 </Text>
 
-                <Text
+                {/* <Text
                   numberOfLines={7}
                   style={{
                     height: "60%",
@@ -126,9 +130,14 @@ const Notes = () => {
                   }}
                 >
                   {item.Body}
-                </Text>
+                </Text> */}
               </View>
             </Pressable>
+            <TouchableOpacity onPress={() => delete_note_from_list(item?.id)}>
+              <Text style={{ color: colors.button_color, fontSize: 17 }}>
+                Delete
+              </Text>
+            </TouchableOpacity>
           </View>
         )}
         ListEmptyComponent={<EmptyNoteList />}
@@ -151,7 +160,7 @@ const Notes = () => {
       >
         <Image
           source={icons.plus}
-          style={{ height: 20, width: 20, tintColor: colors.white }}
+          style={{ height: 20, width: 20, tintColor: colors.background }}
         />
       </TouchableOpacity>
     </SafeAreaView>

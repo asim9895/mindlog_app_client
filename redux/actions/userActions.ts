@@ -1,42 +1,42 @@
-import axios from "axios";
-import { user_routes } from "../api_path";
-import { ActionTypes } from "../types/userTypes";
+// import axios from "axios";
+// import { user_routes } from "../api_path";
+import { UserActionTypes } from "../types/userTypes";
 
-export const save_user =
-  ({
-    user_info,
-    token,
-    authenticated,
-  }: {
-    user_info: any;
-    token: string;
-    authenticated: boolean;
-  }) =>
-  (dispatch: any) => {
-    try {
-      dispatch({
-        type: ActionTypes.SAVE_USER,
-        payload: { user_info, token, authenticated },
-      });
-    } catch (error: any) {
-      console.log(error);
-    }
-  };
+// export const save_user =
+//   ({
+//     user_info,
+//     token,
+//     authenticated,
+//   }: {
+//     user_info: any;
+//     token: string;
+//     authenticated: boolean;
+//   }) =>
+//   (dispatch: any) => {
+//     try {
+//       dispatch({
+//         type: ActionTypes.SAVE_USER,
+//         payload: { user_info, token, authenticated },
+//       });
+//     } catch (error: any) {
+//       console.log(error);
+//     }
+//   };
 
-export const logout_user = () => (dispatch: any) => {
-  try {
-    dispatch({
-      type: ActionTypes.LOGOUT_USER,
-    });
-  } catch (error: any) {
-    console.log(error);
-  }
-};
+// export const logout_user = () => (dispatch: any) => {
+//   try {
+//     dispatch({
+//       type: ActionTypes.LOGOUT_USER,
+//     });
+//   } catch (error: any) {
+//     console.log(error);
+//   }
+// };
 
 export const first_time_entry_change = () => (dispatch: any) => {
   try {
     dispatch({
-      type: ActionTypes.FIRST_TIME_ENTRY_CHANGE,
+      type: UserActionTypes.FIRST_TIME_ENTRY_CHANGE,
     });
   } catch (error: any) {
     console.log(error);

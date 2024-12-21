@@ -1,6 +1,6 @@
 export const colors = {
-  background: "#f2e5d5",
-  text: "#000000",
-  button_color: "#d9614c",
-  white: "#fffdfa",
+  background: "#121213",
+  text: "#ffffff",
+  button_color: "#e4e2dd",
+  white: "#1b1b1a",
 };

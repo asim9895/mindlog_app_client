@@ -4,15 +4,17 @@ import thunk from "redux-thunk";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 import { persistStore, persistReducer } from "redux-persist";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { noteReducer } from "./reducers/noteReducer";
 
 const rootReducers = combineReducers({
   user: userReducer,
+  note: noteReducer,
 });
 
 const persistConfig = {
   key: "portal:root",
   storage: AsyncStorage,
-  whitelist: ["user"],
+  whitelist: ["user", "note"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducers);
